@@ -1,12 +1,49 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>22&deg; Image</title>
+  <title>3602&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
 
 <body>
+  <style>
+    #popup {
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+      border-radius: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #popup h2 {
+      margin-top: 0;
+    }
+
+    #popup label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    #popup select {
+      width: 100%;
+      padding: 5px;
+    }
+
+    #popup button {
+      background-color: #00ff00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+
   <a-scene vr-mode-ui="false">
     <a-assets>
       <img id="kitchen" src="1.jpg">
@@ -38,80 +75,67 @@
         easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
         easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
 
-
-    <a-entity id="popup" visible="false" position="0 0 -1">
+    <a-entity id="popup" visible="false">
       <a-plane color="#fff" opacity="0.9" height="2" width="2"></a-plane>
       <a-entity position="0 0 0.1">
-        <a-text value="Select Date" color="#000" position="-0.8 0.4 0"></a-text>
+        <a-text value="Book a Seat" color="#000" position="0 0.8 0.05" scale="2 2 2"></a-text>
         <a-entity position="-0.8 0.2 0">
-          <a-plane color="#fff" height="0.1" width="0.5"></a-plane>
-          <a-text value="Date" color="#000" position="-0.22 0 0.01"></a-text>
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <a-text value="Date" color="#000" position="-0.65 0 0.01"></a-text>
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <input type="date" id="dateInput" name="dateInput" value="" position="0.05 0 0.01" width="1.4" height="0.1">
         </a-entity>
-        <a-text value="Select Time" color="#000" position="-0.8 -0.2 0"></a-text>
-        <a-entity position="-0.8 -0.4 0">
-          <a-plane color="#fff" height="0.1" width="0.5"></a-plane>
-          <a-text value="Time" color="#000" position="-0.2 0 0.01"></a-text>
+        <a-entity position="-0.8 -0.2 0">
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <a-text value="Time" color="#000" position="-0.65 0 0.01"></a-text>
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <input type="time" id="timeInput" name="timeInput" value="" position="0.05 0 0.01" width="1.4" height="0.1">
         </a-entity>
-        <a-text value="Select Seats" color="#000" position="0.4 0.4 0"></a-text>
-        <a-entity position="0.4 0.2 0">
-          <a-plane color="#fff" height="0.1" width="0.5"></a-plane>
-          <a-text value="Seats" color="#000" position="-0.15 0 0.01"></a-text>
+        <a-entity position="0.8 -0.2 0">
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <a-text value="Seats" color="#000" position="-0.65 0 0.01"></a-text>
+          <a-plane color="#fff" height="0.1" width="1.5"></a-plane>
+          <select id="seatsSelect" name="seatsSelect" position="0.05 0 0.01">
+            <option value="1">1 seat</option>
+            <option value="2">2 seats</option>
+            <option value="3">3 seats</option>
+            <option value="4">4 seats</option>
+          </select>
         </a-entity>
-        <a-entity position="0 0 -0.1">
-          <a-box color="#00ff00" height="0.3" width="1" depth="0.2" position="0 -0.3 0.01"></a-box>
-          <a-text value="Pay" color="#fff" position="-0.18 -0.38 0.02"></a-text>
-        </a-entity>
+        <a-plane color="#00ff00" height="0.3" width="1" depth="0.1" position="0 -0.5 0.01"></a-plane>
+        <a-text value="Pay" color="#fff" position="0 -0.55 0.02"></a-text>
+        <a-box color="#00ff00" height="0.3" width="1" depth="0.1" position="0 -0.5 0.01"></a-box>
+        <a-text value="Pay" color="#fff" position="0 -0.55 0.02"></a-text>
       </a-entity>
     </a-entity>
 
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;">
+    </a-camera>
+
+    <script type="text/javascript">
+      const hotspot1 = document.querySelector('#hotspot1');
+      hotspot1.addEventListener("click", event => {
+         
+        document.querySelector('#popup').setAttribute('visible', 'true');
+      });
+
+      const hotspot2 = document.querySelector('#hotspot2');
+      hotspot2.addEventListener("click", event => {
+       
+        document.querySelector('#popup').setAttribute('visible', 'true');
+      });
+
+      const hotspot3 = document.querySelector('#hotspot3');
+      hotspot3.addEventListener("click", event => { 
+        document.querySelector('#popup').setAttribute('visible', 'true');
+      });
+
+      const hotspot4 = document.querySelector('#hotspot4');
+      hotspot4.addEventListener("click", event => { 
+        document.querySelector('#popup').setAttribute('visible', 'true');
+      });
+    </script>
   </a-scene>
-
-  <script type="text/javascript">
-    const hotspot1 = document.querySelector('#hotspot1');
-    hotspot1.addEventListener("click", event => {
-      document.querySelector('#scene2').setAttribute('visible', 'false');
-      document.querySelector('#scene3').setAttribute('visible', 'true');
-      document.querySelector('#hotspot3').setAttribute('visible', 'true');
-      document.querySelector('#hotspot2').setAttribute('visible', 'false');
-      document.querySelector('#hotspot4').setAttribute('visible', 'false');
-      hotspot1.setAttribute('visible', 'false');
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
-
-    const hotspot2 = document.querySelector('#hotspot2');
-    hotspot2.addEventListener("click", event => {
-      document.querySelector('#scene2').setAttribute('visible', 'false');
-      document.querySelector('#scene1').setAttribute('visible', 'true');
-      document.querySelector('#hotspot4').setAttribute('visible', 'true');
-      document.querySelector('#hotspot1').setAttribute('visible', 'false');
-      document.querySelector('#hotspot3').setAttribute('visible', 'false');
-      hotspot2.setAttribute('visible', 'false');
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
-
-    const hotspot3 = document.querySelector('#hotspot3');
-    hotspot3.addEventListener("click", event => {
-      document.querySelector('#scene3').setAttribute('visible', 'false');
-      document.querySelector('#scene2').setAttribute('visible', 'true');
-      document.querySelector('#hotspot1').setAttribute('visible', 'true');
-      document.querySelector('#hotspot2').setAttribute('visible', 'true');
-      document.querySelector('#hotspot4').setAttribute('visible', 'false');
-      hotspot3.setAttribute('visible', 'false');
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
-
-    const hotspot4 = document.querySelector('#hotspot4');
-    hotspot4.addEventListener("click", event => {
-      document.querySelector('#scene1').setAttribute('visible', 'false');
-      document.querySelector('#scene2').setAttribute('visible', 'true');
-      document.querySelector('#hotspot1').setAttribute('visible', 'true');
-      document.querySelector('#hotspot2').setAttribute('visible', 'true');
-      document.querySelector('#hotspot3').setAttribute('visible', 'false');
-      hotspot4.setAttribute('visible', 'false');
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
-  </script>
 </body>
 </html>
