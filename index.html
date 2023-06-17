@@ -1,7 +1,96 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image</title>
+  <meta name="description" content="360&deg; Image - A-Frame">
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
+
+</head>
+
 <body>
-<iframe src="https://app.lapentor.com/sphere/qusai" frameborder="0" width="100%" height="100%"  scrolling="no" allow="vr,gyroscope,accelerometer" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true"></iframe>
+  <a-scene vr-mode-ui="false">
+    <a-assets>
+      <img id="kitchen" src="https://kitandkaboodle.com/wp-content/uploads/2023/05/1.jpg">
+      <img id="tv" src="https://kitandkaboodle.com/wp-content/uploads/2023/05/2.jpg">
+      <img id="bedroom" src="https://kitandkaboodle.com/wp-content/uploads/2023/06/3-cleaned-scaled.jpg">
+      <img id="hotspot_img" src="https://kitandkaboodle.com/wp-content/uploads/2023/05/arrow.png">
 
+
+    </a-assets>
+
+
+    <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
+      rotation="-90 0 0" visible="true"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot2" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 0.3"
+      rotation="-90 90 90" visible="true"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot3" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 2.5"
+      rotation="-90 90 90" visible="false"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
+      rotation="-90 0 0" visible="false"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+
+    <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false" animation__fadein="property: material.opacity; dur: 100;
+        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
+        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
+    <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true" animation__fadein="property: material.opacity; dur: 100;
+        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
+        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
+    <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false" animation__fadein="property: material.opacity; dur: 100;
+        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
+        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
+
+
+    <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
+      cursor="fuse:true; rayOrigin: mouse;">
+  </a-scene>
+
+  <script type="text/javascript">
+    const hotspot1 = document.querySelector('#hotspot1');
+    hotspot1.addEventListener("click", event => {
+      document.querySelector('#scene2').setAttribute('visible', 'false');
+      document.querySelector('#scene3').setAttribute('visible', 'true');
+      document.querySelector('#hotspot3').setAttribute('visible', 'true');
+      document.querySelector('#hotspot2').setAttribute('visible', 'false');
+      document.querySelector('#hotspot4').setAttribute('visible', 'false');
+      hotspot1.setAttribute('visible', 'false');
+    });
+
+    const hotspot2 = document.querySelector('#hotspot2');
+    hotspot2.addEventListener("click", event => {
+      document.querySelector('#scene2').setAttribute('visible', 'false');
+      document.querySelector('#scene1').setAttribute('visible', 'true');
+      document.querySelector('#hotspot4').setAttribute('visible', 'true');
+      document.querySelector('#hotspot1').setAttribute('visible', 'false');
+      document.querySelector('#hotspot3').setAttribute('visible', 'false');
+      hotspot2.setAttribute('visible', 'false');
+    });
+
+    const hotspot3 = document.querySelector('#hotspot3');
+    hotspot3.addEventListener("click", event => {
+      document.querySelector('#scene3').setAttribute('visible', 'false');
+      document.querySelector('#scene2').setAttribute('visible', 'true');
+      document.querySelector('#hotspot1').setAttribute('visible', 'true');
+      document.querySelector('#hotspot2').setAttribute('visible', 'true');
+      document.querySelector('#hotspot4').setAttribute('visible', 'false');
+      hotspot3.setAttribute('visible', 'false');
+    });
+    const hotspot4 = document.querySelector('#hotspot4');
+    hotspot4.addEventListener("click", event => {
+      document.querySelector('#scene1').setAttribute('visible', 'false');
+      document.querySelector('#scene2').setAttribute('visible', 'true');
+      document.querySelector('#hotspot1').setAttribute('visible', 'true');
+      document.querySelector('#hotspot2').setAttribute('visible', 'true');
+      document.querySelector('#hotspot3').setAttribute('visible', 'false');
+      hotspot4.setAttribute('visible', 'false');
+    });
+
+  </script>
 </body>
-</html>
 
+</html>
