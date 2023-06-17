@@ -3,11 +3,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>3602&deg; Image</title>
+  <title>361&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
-
+<style>
+    #popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,7 +32,25 @@
 
     </a-assets>
 
-
+<div id="popup">
+    <label>
+      Date:
+      <input type="date">
+    </label>
+    <label>
+      Time:
+      <input type="time">
+    </label>
+    <label>
+      Seats:
+      <select>
+        <option>1</option>
+        <option>2</option>
+        <!-- ...more options... -->
+      </select>
+    </label>
+    <button>Pay</button>
+  </div>
     <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
       rotation="-90 0 0" visible="true"
       material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
@@ -88,6 +117,15 @@
       document.querySelector('#hotspot2').setAttribute('visible', 'true');
       document.querySelector('#hotspot3').setAttribute('visible', 'false');
       hotspot4.setAttribute('visible', 'false');
+    });
+const hotspot1 = document.querySelector('#hotspot1');
+    const popup = document.querySelector('#popup');
+
+    hotspot1.addEventListener("click", event => {
+      // ...existing event handler content...
+
+      // Show the popup when the hotspot is clicked
+      popup.style.display = 'block';
     });
 
   </script>
