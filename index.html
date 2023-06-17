@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>5&deg; Image</title>
+  <title>52&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
@@ -115,46 +115,22 @@
 
     <script type="text/javascript">
       const hotspot1 = document.querySelector('#hotspot1');
-      hotspot1.addEventListener("click", event => {
-        document.querySelector('#scene2').setAttribute('visible', 'false');
-        document.querySelector('#scene3').setAttribute('visible', 'true');
-        document.querySelector('#hotspot3').setAttribute('visible', 'true');
-        document.querySelector('#hotspot2').setAttribute('visible', 'false');
-        document.querySelector('#hotspot4').setAttribute('visible', 'false');
-        hotspot1.setAttribute('visible', 'false');
+      hotspot1.addEventListener("click", event => { 
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot2 = document.querySelector('#hotspot2');
-      hotspot2.addEventListener("click", event => {
-        document.querySelector('#scene2').setAttribute('visible', 'false');
-        document.querySelector('#scene1').setAttribute('visible', 'true');
-        document.querySelector('#hotspot4').setAttribute('visible', 'true');
-        document.querySelector('#hotspot1').setAttribute('visible', 'false');
-        document.querySelector('#hotspot3').setAttribute('visible', 'false');
-        hotspot2.setAttribute('visible', 'false');
+      hotspot2.addEventListener("click", event => { 
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot3 = document.querySelector('#hotspot3');
-      hotspot3.addEventListener("click", event => {
-        document.querySelector('#scene3').setAttribute('visible', 'false');
-        document.querySelector('#scene2').setAttribute('visible', 'true');
-        document.querySelector('#hotspot1').setAttribute('visible', 'true');
-        document.querySelector('#hotspot2').setAttribute('visible', 'true');
-        document.querySelector('#hotspot4').setAttribute('visible', 'false');
-        hotspot3.setAttribute('visible', 'false');
+      hotspot3.addEventListener("click", event => { 
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot4 = document.querySelector('#hotspot4');
-      hotspot4.addEventListener("click", event => {
-        document.querySelector('#scene1').setAttribute('visible', 'false');
-        document.querySelector('#scene2').setAttribute('visible', 'true');
-        document.querySelector('#hotspot1').setAttribute('visible', 'true');
-        document.querySelector('#hotspot2').setAttribute('visible', 'true');
-        document.querySelector('#hotspot3').setAttribute('visible', 'false');
-        hotspot4.setAttribute('visible', 'false');
+      hotspot4.addEventListener("click", event => { 
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
     </script>
