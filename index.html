@@ -1,53 +1,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>323&deg; Image</title>
+  <title>3602&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
 
 <body>
-  <style>
-    #popup {
-      background-color: #fff;
-      width: 300px;
-      padding: 20px;
-      text-align: center;
-      border-radius: 5px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    #popup h2 {
-      margin: 0;
-    }
-
-    #popup label {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-
-    #popup select {
-      width: 100%;
-      padding: 5px;
-    }
-
-    #popup button {
-      background-color: #00ff00;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-  </style>
-
   <a-scene vr-mode-ui="false">
     <a-assets>
       <img id="kitchen" src="1.jpg">
@@ -73,7 +32,7 @@
       rotation="-90 0 0" visible="false"
       material="src: #hotspot_img; opacity: 1; side: both; transparent: true;"></a-entity>
 
-    <a-entity id="popup" visible="false">
+    <a-entity id="popup" visible="false" position="0 0 -2">
       <a-plane color="#fff" opacity="0.9" height="2" width="2"></a-plane>
       <a-entity position="0 0 0.1">
         <a-text value="Book a Seat" color="#000" position="0 0.8 0.05" scale="2 2 2"></a-text>
@@ -106,23 +65,33 @@
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;">
     </a-camera>
+
+    <a-entity id="clickListener" cursor-listener></a-entity>
   </a-scene>
 
-  <script type="text/javascript">
-    document.querySelector('#hotspot1').addEventListener('click',  event => {
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
+  <script>
+    AFRAME.registerComponent('cursor-listener', {
+      init: function () {
+        var el = this.el;
 
-    document.querySelector('#hotspot2').addEventListener('click',  event => {
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
+        el.addEventListener('click', function (event) {
+          var hotspot1 = document.querySelector('#hotspot1');
+          var hotspot2 = document.querySelector('#hotspot2');
+          var hotspot3 = document.querySelector('#hotspot3');
+          var hotspot4 = document.querySelector('#hotspot4');
+          var popup = document.querySelector('#popup');
 
-    document.querySelector('#hotspot3').addEventListener('click',  event => {
-      document.querySelector('#popup').setAttribute('visible', 'true');
-    });
-
-    document.querySelector('#hotspot4').addEventListener('click',  event => {
-      document.querySelector('#popup').setAttribute('visible', 'true');
+          if (event.detail.intersectedEl === hotspot1) {
+            popup.setAttribute('visible', 'true');
+          } else if (event.detail.intersectedEl === hotspot2) {
+            popup.setAttribute('visible', 'true');
+          } else if (event.detail.intersectedEl === hotspot3) {
+            popup.setAttribute('visible', 'true');
+          } else if (event.detail.intersectedEl === hotspot4) {
+            popup.setAttribute('visible', 'true');
+          }
+        });
+      }
     });
   </script>
 </body>
