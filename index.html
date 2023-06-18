@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>55&deg; Image</title>
+  <title>3602&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
@@ -112,24 +112,11 @@
         document.querySelector('#popup').setAttribute('visible', 'false');
       });
 
-      const hotspot1 = document.querySelector('#hotspot1');
-      hotspot1.addEventListener("click", event => {
-        document.querySelector('#popup').setAttribute('visible', 'true');
-      });
-
-      const hotspot2 = document.querySelector('#hotspot2');
-      hotspot2.addEventListener("click", event => {
-        document.querySelector('#popup').setAttribute('visible', 'true');
-      });
-
-      const hotspot3 = document.querySelector('#hotspot3');
-      hotspot3.addEventListener("click", event => {
-        document.querySelector('#popup').setAttribute('visible', 'true');
-      });
-
-      const hotspot4 = document.querySelector('#hotspot4');
-      hotspot4.addEventListener("click", event => {
-        document.querySelector('#popup').setAttribute('visible', 'true');
+      var hotspots = document.querySelectorAll('.clickable');
+      hotspots.forEach(function(hotspot) {
+        hotspot.addEventListener('click', function() {
+          document.querySelector('#popup').setAttribute('visible', 'true');
+        });
       });
     </script>
   </a-scene>
