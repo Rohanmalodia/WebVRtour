@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>3602&deg; Image</title>
+  <title>1234&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
@@ -106,11 +106,11 @@
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;">
     </a-camera>
+  </a-scene>
 
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector('#popup').setAttribute('visible', 'false');
-      });
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector('#popup').setAttribute('visible', 'false');
 
       var hotspots = document.querySelectorAll('.clickable');
       hotspots.forEach(function(hotspot) {
@@ -118,7 +118,7 @@
           document.querySelector('#popup').setAttribute('visible', 'true');
         });
       });
-    </script>
-  </a-scene>
+    });
+  </script>
 </body>
 </html>
