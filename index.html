@@ -2,22 +2,13 @@
 
 <head>
   <meta charset="utf-8">
-  <title>123&deg; Image</title>
+  <title>123232&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+	<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>   
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
- <style>
-    #popup {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-    }
-  </style>
+ 
 </head>
 
 <body>
@@ -123,15 +114,7 @@
   });
 
   // Update the rotation of the popup entity to face the camera
-  AFRAME.registerComponent('update-popup-rotation', {
-    init: function () {
-      this.camera = document.querySelector('#camera');
-      this.el.object3D.rotation.set(0, this.camera.object3D.rotation.y, 0);
-    },
-    tick: function () {
-      this.el.object3D.rotation.set(0, this.camera.object3D.rotation.y, 0);
-    }
-  });
+  
 
   </script>
 </body>
