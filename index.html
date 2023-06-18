@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>52&deg; Image</title>
+  <title>3602&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
@@ -56,6 +56,10 @@
       <img id="hotspot_img" src="arrow.png">
     </a-assets>
 
+    <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false"></a-sky>
+    <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true"></a-sky>
+    <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
+
     <a-entity id="hotspot1" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
       rotation="-90 0 0" visible="true"
       material="src: #hotspot_img; opacity: 1; side: both; transparent: true;"></a-entity>
@@ -68,16 +72,6 @@
     <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
       rotation="-90 0 0" visible="false"
       material="src: #hotspot_img; opacity: 1; side: both; transparent: true;"></a-entity>
-
-    <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false" animation__fadein="property: material.opacity; dur: 100;
-        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
-        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
-    <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true" animation__fadein="property: material.opacity; dur: 100;
-        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
-        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
-    <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false" animation__fadein="property: material.opacity; dur: 100;
-        easing: linear; from 0; to: 1; startEvents: fadein" animation__fadeout="property: material.opacity; dur: 100;
-        easing: linear; from 1; to: 0; startEvents: fadeout"></a-sky>
 
     <a-entity id="popup" visible="false">
       <a-plane color="#fff" opacity="0.9" height="2" width="2"></a-plane>
@@ -115,22 +109,22 @@
 
     <script type="text/javascript">
       const hotspot1 = document.querySelector('#hotspot1');
-      hotspot1.addEventListener("click", event => { 
+      hotspot1.addEventListener("click", event => {
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot2 = document.querySelector('#hotspot2');
-      hotspot2.addEventListener("click", event => { 
+      hotspot2.addEventListener("click", event => {
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot3 = document.querySelector('#hotspot3');
-      hotspot3.addEventListener("click", event => { 
+      hotspot3.addEventListener("click", event => {
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
 
       const hotspot4 = document.querySelector('#hotspot4');
-      hotspot4.addEventListener("click", event => { 
+      hotspot4.addEventListener("click", event => {
         document.querySelector('#popup').setAttribute('visible', 'true');
       });
     </script>
