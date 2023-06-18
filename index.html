@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <title>12123&deg; Image</title>
+  <title>131231&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
@@ -26,30 +26,8 @@
       <img id="bedroom" src="https://kitandkaboodle.com/wp-content/uploads/2023/06/3-cleaned-scaled.jpg">
       <img id="hotspot_img" src="arrow.png">
     </a-assets>
-<a-entity position="0 1.6 -1" htmlembed>
-		<p>My HTsdsdsdadasdwqeqwaeasfasML</p>
-	</a-entity>
-    <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
-      rotation="-90 0 0" visible="true"
-      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-    <a-entity id="hotspot2" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 0.3"
-      rotation="-90 90 90" visible="true"
-      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-    <a-entity id="hotspot3" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 2.5"
-      rotation="-90 90 90" visible="false"
-      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-    <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
-      rotation="-90 0 0" visible="false"
-      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-    <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false"  ></a-sky>
-    <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true"  ></a-sky>
-    <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
-    <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
-      cursor="fuse:true; rayOrigin: mouse;"></a-camera>
-
-    
-  </a-scene>
-<div id="popup">
+	<a-entity position="0 1.6 -1" htmlembed>
+		<div id="popup">
     <label>
       Date: 
       <input type="date" id="date">
@@ -74,6 +52,28 @@
     </label>
     <button id="pay">Pay</button>
   </div>
+	</a-entity>
+    <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
+      rotation="-90 0 0" visible="true"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot2" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 0.3"
+      rotation="-90 90 90" visible="true"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot3" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="2.6 -1.8 2.5"
+      rotation="-90 90 90" visible="false"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
+      rotation="-90 0 0" visible="false"
+      material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
+    <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false"  ></a-sky>
+    <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true"  ></a-sky>
+    <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
+    <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
+      cursor="fuse:true; rayOrigin: mouse;"></a-camera>
+
+    
+  </a-scene>
+
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
     const popup = document.querySelector('#popup');
