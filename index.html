@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>12323&deg; Image</title>
+  <title>55425&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
@@ -80,9 +80,18 @@
   </div>
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
+    const popup = document.querySelector('#popup');
     hotspot1.addEventListener("click", event => { 
        document.querySelector('#popup').style.display = 'block';
       
+      const hotspotPosition = hotspot1.getAttribute('position');
+      const cameraPosition = document.querySelector('#camera').getAttribute('position');
+      const popupPosition = {
+        x: hotspotPosition.x + cameraPosition.x,
+        y: hotspotPosition.y + cameraPosition.y,
+        z: hotspotPosition.z + cameraPosition.z
+      };
+      popup.setAttribute('position', popupPosition);
       
     });
 
