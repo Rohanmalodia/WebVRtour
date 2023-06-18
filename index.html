@@ -1,16 +1,23 @@
-<html>
-
 <head>
   <meta charset="utf-8">
-  <title>123232&deg; Image</title>
+  <title>55425&deg; Image</title>
+  <title>1111&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-	<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>   
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
- 
+ <style>
+    #popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-
 <body>
   <a-scene vr-mode-ui="false">
     <a-assets>
@@ -18,11 +25,8 @@
       <img id="tv" src="es.jpg">
       <img id="bedroom" src="https://kitandkaboodle.com/wp-content/uploads/2023/06/3-cleaned-scaled.jpg">
       <img id="hotspot_img" src="arrow.png">
-
-
     </a-assets>
  
-
     <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
       rotation="-90 0 0" visible="true"
       material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
@@ -35,46 +39,59 @@
     <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
       rotation="-90 0 0" visible="false"
       material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-    <a-scene>
-	<a-entity position="-2.6 -1.8 0.5" htmlembed>
-		<div id="clickme" onclick="console.log('do something')">Click Me</div>
-	</a-entity>
-</a-scene>
-<a-entity id="popup" position="-2.6 1.5 0.5" visible="true">
-  <a-entity geometry="primitive: plane; width: 2; height: 2" material="color: white; opacity: 0.8"
-    position="0 0 0" rotation="-90 0 0"></a-entity>
-  <a-entity text="value: Date:; color: black; anchor: left; baseline: top" position="-0.9 0.7 0"></a-entity>
-  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.2 0"></a-entity>
-  <a-entity text="value: Number of seats:; color: black; anchor: left; baseline: top" position="-0.9 -0.3 0"></a-entity>
-  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.4 0"></a-entity>
-  <a-entity text="value: Time:; color: black; anchor: left; baseline: top" position="-0.9 -0.5 0"></a-entity>
-  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.6 0"></a-entity>
-  <a-entity text="value: Seat reserved:; color: black; anchor: left; baseline: top" position="-0.9 -0.7 0"></a-entity>
-  <a-entity checkbox position="0.2 -0.7 0"></a-entity>
-  <a-entity button position="0 -0.9 0" text="value: Pay" scale="0.5 0.5 0.5"></a-entity>
-</a-entity>
     <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false"  ></a-sky>
     <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true"  ></a-sky>
     <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
-
-
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;"></a-camera>
   </a-scene>
- 
+<div id="popup">
+    <label>
+      Date: 
+      <input type="date" id="date">
+    </label>
+    <label>
+      Number of seats: 
+      <select id="numSeats">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <!-- Add more options as needed -->
+      </select>
+    </label>
+    <label>
+      Time: 
+      <input type="time" id="time">
+    </label>
+    <label>
+      Seat reserved: 
+      <input type="checkbox" id="reserved">
+    </label>
+    <button id="pay">Pay</button>
+  </div>
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
     const popup = document.querySelector('#popup');
-    hotspot1.addEventListener("click", event => {  
-       document.querySelector('#popup').style.display = 'block';
+    hotspot1.addEventListener("click", event => { 
+       const hotspotPosition = hotspot1.getAttribute('position');
+    const cameraRotation = document.querySelector('#camera').getAttribute('rotation');
+    const cameraPosition = document.querySelector('#camera').getAttribute('position');
+    // Calculate the position of the popup
+    const popupPosition = {
+      x: hotspotPosition.x + cameraPosition.x,
+      y: hotspotPosition.y + cameraPosition.y,
+      z: hotspotPosition.z + cameraPosition.z
+    };
+    // Set the position of the popup
+    popup.setAttribute('position', popupPosition);
+    popup.setAttribute('visible', true);
     });
-
     const hotspot2 = document.querySelector('#hotspot2');
     hotspot2.addEventListener("click", event => { 
        document.querySelector('#popup').style.display = 'block';
        
     });
-
     const hotspot3 = document.querySelector('#hotspot3');
     hotspot3.addEventListener("click", event => { 
        document.querySelector('#popup').style.display = 'block';
@@ -85,38 +102,6 @@
        document.querySelector('#popup').style.display = 'block';
       
     });
-    AFRAME.registerComponent('button', {
-    schema: {
-      text: { type: 'string', default: 'Button' }
-    },
-    init: function () {
-      this.createButton();
-      this.el.addEventListener('click', this.onClick.bind(this));
-    },
-    createButton: function () {
-      const buttonGeometry = document.createElement('a-plane');
-      buttonGeometry.setAttribute('geometry', 'primitive: plane; width: 1; height: 0.3');
-      buttonGeometry.setAttribute('material', 'color: lightgray');
-      buttonGeometry.setAttribute('position', '0 0 0');
-      this.el.appendChild(buttonGeometry);
-
-      const buttonText = document.createElement('a-text');
-      buttonText.setAttribute('value', this.data.text);
-      buttonText.setAttribute('color', 'black');
-      buttonText.setAttribute('anchor', 'center');
-      buttonText.setAttribute('position', '0 0 0.1');
-      this.el.appendChild(buttonText);
-    },
-    onClick: function () {
-      // Handle button click event here
-      console.log('Button clicked');
-    }
-  });
-
-  // Update the rotation of the popup entity to face the camera
-  
-
   </script>
 </body>
-
 </html>
