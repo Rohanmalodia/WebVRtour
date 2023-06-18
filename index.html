@@ -82,17 +82,20 @@
     const hotspot1 = document.querySelector('#hotspot1');
     const popup = document.querySelector('#popup');
     hotspot1.addEventListener("click", event => { 
-       document.querySelector('#popup').style.display = 'block';
-      
-      const hotspotPosition = hotspot1.getAttribute('position');
-      const cameraPosition = document.querySelector('#camera').getAttribute('position');
-      const popupPosition = {
-        x: hotspotPosition.x + cameraPosition.x,
-        y: hotspotPosition.y + cameraPosition.y,
-        z: hotspotPosition.z + cameraPosition.z
-      };
-      popup.setAttribute('position', popupPosition);
-      
+       const hotspotPosition = hotspot1.getAttribute('position');
+    const cameraRotation = document.querySelector('#camera').getAttribute('rotation');
+    const cameraPosition = document.querySelector('#camera').getAttribute('position');
+
+    // Calculate the position of the popup
+    const popupPosition = {
+      x: hotspotPosition.x + cameraPosition.x,
+      y: hotspotPosition.y + cameraPosition.y,
+      z: hotspotPosition.z + cameraPosition.z
+    };
+
+    // Set the position of the popup
+    popup.setAttribute('position', popupPosition);
+    popup.setAttribute('visible', true);
     });
 
     const hotspot2 = document.querySelector('#hotspot2');
