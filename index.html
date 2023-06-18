@@ -1,9 +1,10 @@
 <head>
   <meta charset="utf-8">
   <title>55425&deg; Image</title>
-  <title>1111&deg; Image</title>
+  <title>12123&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+   <script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
  <style>
     #popup {
@@ -26,7 +27,10 @@
       <img id="bedroom" src="https://kitandkaboodle.com/wp-content/uploads/2023/06/3-cleaned-scaled.jpg">
       <img id="hotspot_img" src="arrow.png">
     </a-assets>
- 
+  <a-entity htmlembed position="-2.6 -1.8 0.5">
+    <h1>An Example</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </a-entity>
     <a-entity id="hotspot1" class="clickable"  geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 0.5"
       rotation="-90 0 0" visible="true"
       material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
@@ -44,6 +48,8 @@
     <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;"></a-camera>
+
+    
   </a-scene>
 <div id="popup">
     <label>
@@ -73,19 +79,8 @@
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
     const popup = document.querySelector('#popup');
-    hotspot1.addEventListener("click", event => { 
-       const hotspotPosition = hotspot1.getAttribute('position');
-    const cameraRotation = document.querySelector('#camera').getAttribute('rotation');
-    const cameraPosition = document.querySelector('#camera').getAttribute('position');
-    // Calculate the position of the popup
-    const popupPosition = {
-      x: hotspotPosition.x + cameraPosition.x,
-      y: hotspotPosition.y + cameraPosition.y,
-      z: hotspotPosition.z + cameraPosition.z
-    };
-    // Set the position of the popup
-    popup.setAttribute('position', popupPosition);
-    popup.setAttribute('visible', true);
+    hotspot1.addEventListener("click", event => {  
+   document.querySelector('#popup').style.display = 'block';
     });
     const hotspot2 = document.querySelector('#hotspot2');
     hotspot2.addEventListener("click", event => { 
