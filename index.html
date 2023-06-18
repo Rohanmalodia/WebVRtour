@@ -2,11 +2,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>360&deg; Image</title>
+  <title>test&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
-
+ <style>
+    #popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -42,7 +53,31 @@
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;"></a-camera>
   </a-scene>
-
+<div id="popup">
+    <label>
+      Date: 
+      <input type="date" id="date">
+    </label>
+    <label>
+      Number of seats: 
+      <select id="numSeats">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <!-- Add more options as needed -->
+      </select>
+    </label>
+    <label>
+      Time: 
+      <input type="time" id="time">
+    </label>
+    <label>
+      Seat reserved: 
+      <input type="checkbox" id="reserved">
+    </label>
+    <button id="pay">Pay</button>
+  </div>
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
     hotspot1.addEventListener("click", event => {
@@ -51,7 +86,9 @@
       document.querySelector('#hotspot3').setAttribute('visible', 'true');
       document.querySelector('#hotspot2').setAttribute('visible', 'false');
       document.querySelector('#hotspot4').setAttribute('visible', 'false');
+       document.querySelector('#popup').style.display = 'block';
       hotspot1.setAttribute('visible', 'false');
+      
     });
 
     const hotspot2 = document.querySelector('#hotspot2');
@@ -61,6 +98,7 @@
       document.querySelector('#hotspot4').setAttribute('visible', 'true');
       document.querySelector('#hotspot1').setAttribute('visible', 'false');
       document.querySelector('#hotspot3').setAttribute('visible', 'false');
+       document.querySelector('#popup').style.display = 'block';
       hotspot2.setAttribute('visible', 'false');
     });
 
@@ -71,6 +109,7 @@
       document.querySelector('#hotspot1').setAttribute('visible', 'true');
       document.querySelector('#hotspot2').setAttribute('visible', 'true');
       document.querySelector('#hotspot4').setAttribute('visible', 'false');
+       document.querySelector('#popup').style.display = 'block';
       hotspot3.setAttribute('visible', 'false');
     });
     const hotspot4 = document.querySelector('#hotspot4');
@@ -80,6 +119,7 @@
       document.querySelector('#hotspot1').setAttribute('visible', 'true');
       document.querySelector('#hotspot2').setAttribute('visible', 'true');
       document.querySelector('#hotspot3').setAttribute('visible', 'false');
+       document.querySelector('#popup').style.display = 'block';
       hotspot4.setAttribute('visible', 'false');
     });
 
