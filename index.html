@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>1233&deg; Image</title>
+  <title>1332&deg; Image</title>
   <meta name="description" content="360&deg; Image - A-Frame">
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <!-- <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script> -->
@@ -44,7 +44,20 @@
     <a-entity id="hotspot4" class="clickable" geometry="primitive: plane; height: 1; width: 1;" position="-2.6 -1.8 4"
       rotation="-90 0 0" visible="false"
       material="src: #hotspot_img; opacity: 1;side: both; transparent: true;"></a-entity>
-
+<a-entity id="popup" position="-2.6 -1.8 0.5" visible="true">
+  <a-entity geometry="primitive: plane; width: 2; height: 2" material="color: white; opacity: 0.8"
+            position="0 0 -2" rotation="-90 0 0"></a-entity>
+  <a-entity text="value: Date:; color: black; anchor: left; baseline: top" position="-0.9 0.7 -2"></a-entity>
+  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.2 -2"></a-entity>
+  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.4 -2"></a-entity>
+  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.6 -2"></a-entity>
+  <a-entity geometry="primitive: plane; width: 1.5; height: 0.1" material="color: lightgray" position="0 -0.8 -2"></a-entity>
+  <a-entity text="value: Number of seats:; color: black; anchor: left; baseline: top" position="-0.9 -0.3 -2"></a-entity>
+  <a-entity text="value: Time:; color: black; anchor: left; baseline: top" position="-0.9 -0.5 -2"></a-entity>
+  <a-entity text="value: Seat reserved:; color: black; anchor: left; baseline: top" position="-0.9 -0.7 -2"></a-entity>
+  <a-entity checkbox position="0.2 -0.7 -2"></a-entity>
+  <a-entity button position="0 -0.9 -2" text="value: Pay"></a-entity>
+</a-entity>
     <a-sky id="scene1" src="#kitchen" rotation="0 0 0" visible="false"  ></a-sky>
     <a-sky id="scene2" src="#tv" rotation="0 0 0" visible="true"  ></a-sky>
     <a-sky id="scene3" src="#bedroom" rotation="0 0 0" visible="false"></a-sky>
@@ -53,49 +66,12 @@
     <a-camera id="camera" position="0 0 0" rotation="90 0 0" raycaster="objects:.clickable"
       cursor="fuse:true; rayOrigin: mouse;"></a-camera>
   </a-scene>
-<div id="popup">
-    <label>
-      Date: 
-      <input type="date" id="date">
-    </label>
-    <label>
-      Number of seats: 
-      <select id="numSeats">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <!-- Add more options as needed -->
-      </select>
-    </label>
-    <label>
-      Time: 
-      <input type="time" id="time">
-    </label>
-    <label>
-      Seat reserved: 
-      <input type="checkbox" id="reserved">
-    </label>
-    <button id="pay">Pay</button>
-  </div>
+ 
   <script type="text/javascript">
     const hotspot1 = document.querySelector('#hotspot1');
     const popup = document.querySelector('#popup');
-    hotspot1.addEventListener("click", event => { 
-       const hotspotPosition = hotspot1.getAttribute('position');
-    const cameraRotation = document.querySelector('#camera').getAttribute('rotation');
-    const cameraPosition = document.querySelector('#camera').getAttribute('position');
-
-    // Calculate the position of the popup
-    const popupPosition = {
-      x: hotspotPosition.x + cameraPosition.x,
-      y: hotspotPosition.y + cameraPosition.y,
-      z: hotspotPosition.z + cameraPosition.z
-    };
-
-    // Set the position of the popup
-    popup.setAttribute('position', popupPosition);
-    popup.style.display = 'block';
+    hotspot1.addEventListener("click", event => {  
+       document.querySelector('#popup').style.display = 'block';
     });
 
     const hotspot2 = document.querySelector('#hotspot2');
